@@ -16,7 +16,7 @@ const Board = () => {
   useEffect(() => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d",{ willReadFrequently: true });
     if (actionMenuItem === MENU_ITEMS.DOWNLOAD) {
       const url = canvas.toDataURL();
       const a = document.createElement("a");
@@ -47,7 +47,7 @@ const Board = () => {
   useEffect(() => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d",{ willReadFrequently: true });
     const changeConfig = (mycolor, mysize) => {
       context.strokeStyle = mycolor;
       context.lineWidth = mysize;
@@ -61,7 +61,7 @@ const Board = () => {
   useLayoutEffect(() => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d",{ willReadFrequently: true });
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     context.fillStyle = canBG; // Set solid background color
